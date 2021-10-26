@@ -4,15 +4,16 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 
 
+
 vertices = (
-	(1, -1, -1),
-	(1, 1, -1),
-	(-1, 1, -1),
-	(-1, -1, -1),
-	(1, -1, 1),
+	(1, 0, 0),
+	(1, 1, 0),
+	(0, 1, 0),
+	(0, 0, 0),
+	(1, 0, 1),
 	(1, 1, 1),
-	(-1, -1, 1),
-	(-1, 1, 1)
+	(0, 0, 1),
+	(0, 1, 1)
 )
 
 edges = (
@@ -42,10 +43,23 @@ class Cube:
 
 class CubesOnSpace:
 	def update(self):
-		Cube(1,1,1)
+		for x in range(20):
+			for z in range(20):
+				Cube(x, 0, z)
+
+class CubesOnSpace2:
+	def update(self):
+		for x in range(20):
+			for z in range(20):
+				Cube(x, 5, z)
+
+
+
 
 if __name__=="__main__":
 	app = App()
 	cubes_on_space = CubesOnSpace()
+	cubes_on_space2 = CubesOnSpace2()
+	app.render.append(cubes_on_space)
 	app.render.append(cubes_on_space)
 	app.run()
